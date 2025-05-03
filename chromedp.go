@@ -451,6 +451,10 @@ func (c *Context) attachTarget(ctx context.Context, targetID target.ID) error {
 	}
 	c.Target.isWorker = strings.Contains(res.ClassName, "WorkerGlobalScope")
 
+	if err = runtime.Disable().Do(cdp.WithExecutor(ctx, c.Target)); err != nil {
+		return err
+	}
+
 	// Enable available domains and discover targets.
 	actions := []Action{
 		log.Enable(),
