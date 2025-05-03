@@ -1,4 +1,4 @@
-module github.com/chromedp/chromedp
+module github.com/stack1ng/chromedp
 
 go 1.23
 
